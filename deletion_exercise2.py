@@ -35,6 +35,27 @@ class BinarySearchTreeNode:
 
         return elements
 
+    def delete(self, val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
+
+            min_val = self.right.find_min()
+            self.data = min_val
+            self.right = self.right.delete(min_val)
+
+        return self
+
     def find_max(self):
         if self.right is None:
             return self.data
@@ -55,8 +76,19 @@ def build_tree(elements):
     return root
 
 if __name__ == '__main__':
+    print(border)
+    print("\33[1m\33[33mLetters\33[0m")
     letters = ["J","E","L","E","N","K","R","I","Z","A","N","G","E","L","P","E","R","A","L","T","A","M","A","M","P","U","S","T","I"]
     letters_tree = build_tree(letters)
+    letters_tree.delete("L")
+    print("After deleting L ",letters_tree.in_order_traversal())
+    letters_tree.delete("P")
+    print("After deleting P ",letters_tree.in_order_traversal())
+    
 
+    print(border)
+    print("\33[1m\33[33mLetters\33[0m")
     numbers = [17,20,15,23,40,25,34,37,89,43,18,14,51]
     numbers_tree = build_tree(numbers)
+    numbers_tree.delete(40)
+    print("After deleting 40 ",numbers_tree.in_order_traversal())
