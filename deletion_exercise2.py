@@ -81,14 +81,24 @@ if __name__ == '__main__':
     letters = ["J","E","L","E","N","K","R","I","Z","A","N","G","E","L","P","E","R","A","L","T","A","M","A","M","P","U","S","T","I"]
     letters_tree = build_tree(letters)
     letters_tree.delete("L")
-    print("After deleting L ",letters_tree.in_order_traversal())
+    print("After deleting L: ",letters_tree.in_order_traversal())
+    print("\n")
+    letters = ["J","E","L","E","N","K","R","I","Z","A","N","G","E","L","P","E","R","A","L","T","A","M","A","M","P","U","S","T","I"]
+    letters_tree = build_tree(letters)
     letters_tree.delete("P")
-    print("After deleting P ",letters_tree.in_order_traversal())
+    print("After deleting P: ",letters_tree.in_order_traversal())
     
 
     print(border)
-    print("\33[1m\33[33mLetters\33[0m")
+    print("\33[1m\33[33mNumbers\33[0m")
     numbers = [17,20,15,23,40,25,34,37,89,43,18,14,51]
     numbers_tree = build_tree(numbers)
     numbers_tree.delete(40)
-    print("After deleting 40 ",numbers_tree.in_order_traversal())
+    print("After deleting 40: ",numbers_tree.in_order_traversal())
+    print("\n")
+    numbers = [17,20,15,23,40,25,34,37,89,43,18,14,51]
+    numbers_tree = build_tree(numbers)
+    numbers_tree.delete(89)
+    print("After deleting 89: ",numbers_tree.in_order_traversal())
+    print("\n")
+    print(border)
