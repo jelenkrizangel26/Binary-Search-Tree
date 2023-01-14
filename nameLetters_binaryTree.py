@@ -21,3 +21,16 @@ class BinarySearchTreeNode:
                 self.right.add_me(data)
             else:
                 self.right = BinarySearchTreeNode(data)
+
+def build_tree(elements):
+    print("Building tree with these elements: ",elements)
+    root = BinarySearchTreeNode(elements[0])
+
+    for i in range(1,len(elements)):
+        root.add_me(elements[i])
+
+    return root
+
+if __name__ == '__main__':
+    letters = ["J","E","L","E","N","K","R","I","Z","A","N","G","E","L","P","E","R","A","L","T","A","M","A","M","P","U","S","T","I"]
+    letters_tree = build_tree(letters)
