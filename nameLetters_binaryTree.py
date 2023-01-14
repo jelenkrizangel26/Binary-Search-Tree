@@ -22,6 +22,22 @@ class BinarySearchTreeNode:
             else:
                 self.right = BinarySearchTreeNode(data)
 
+    def search(self, val):
+        if self.data == val:
+            return True
+
+        if val < self.data:
+            if self.left:
+                return self.left.search(val)
+            else:
+                return False
+
+        if val > self.data:
+            if self.right:
+                return self.right.search(val)
+            else:
+                return False
+
 def build_tree(elements):
     print("Building tree with these elements: ",elements)
     root = BinarySearchTreeNode(elements[0])
@@ -34,3 +50,6 @@ def build_tree(elements):
 if __name__ == '__main__':
     letters = ["J","E","L","E","N","K","R","I","Z","A","N","G","E","L","P","E","R","A","L","T","A","M","A","M","P","U","S","T","I"]
     letters_tree = build_tree(letters)
+
+    print("Does letter C is on the list?", letters_tree.search("C"))
+    print("Does letter L is on the list?", letters_tree.search("L"))
