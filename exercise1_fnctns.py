@@ -29,22 +29,6 @@ class BinarySearchTreeNode:
             else:
                 self.right = BinarySearchTreeNode(data)
 
-    def search(self, val):
-        if self.data == val:
-            return True
-
-        if val < self.data:
-            if self.left:
-                return self.left.search(val)
-            else:
-                return False
-
-        if val > self.data:
-            if self.right:
-                return self.right.search(val)
-            else:
-                return False
-
     def in_order_traversal(self):
         elements = []
         if self.left:
@@ -67,6 +51,11 @@ class BinarySearchTreeNode:
             return self.data
         return self.left.find_min()
 
+    def calculate_sum(self):
+        left_sum = self.left.calculate_sum() if self.left else 0
+        right_sum = self.right.calculate_sum() if self.right else 0
+        return self.data + left_sum + right_sum
+
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
 
@@ -84,7 +73,6 @@ if __name__ == '__main__':
     print("Input letters:",letters)
     print("Min:",letters_tree.find_min())
     print("Max:",letters_tree.find_max())
-    print("Does letter C is on the list?", letters_tree.search("C"))
     
     print(border)
     print("\33[1m\33[33mNumbers\33[0m")
@@ -93,5 +81,6 @@ if __name__ == '__main__':
     print("Input numbers:",numbers)
     print("Min:",numbers_tree.find_min())
     print("Max:",numbers_tree.find_max())
+    print("Sum:", numbers_tree.calculate_sum())
     
     
