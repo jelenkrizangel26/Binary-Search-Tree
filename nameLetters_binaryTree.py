@@ -38,6 +38,18 @@ class BinarySearchTreeNode:
             else:
                 return False
 
+    def in_order_traversal(self):
+        elements = []
+        if self.left:
+            elements += self.left.in_order_traversal()
+
+        elements.append(self.data)
+
+        if self.right:
+            elements += self.right.in_order_traversal()
+
+        return elements
+
 def build_tree(elements):
     print("Building tree with these elements: ",elements)
     root = BinarySearchTreeNode(elements[0])
@@ -53,3 +65,5 @@ if __name__ == '__main__':
 
     print("Does letter C is on the list?", letters_tree.search("C"))
     print("Does letter L is on the list?", letters_tree.search("L"))
+
+    print("In order traversal gives this sorted list:",letters_tree.in_order_traversal())
